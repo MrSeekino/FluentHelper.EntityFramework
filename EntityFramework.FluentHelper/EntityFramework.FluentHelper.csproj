@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <ProjectGuid>{6FB60399-2D07-4314-9574-9B429992D77A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EntityFramework.FluentHelper</RootNamespace>
+    <AssemblyName>EntityFramework.FluentHelper</AssemblyName>
+    <TargetFrameworks>net45;net46;net47</TargetFrameworks>
+	<PackageId>EntityFramework.FluentHelper</PackageId>
+    <Title>EntityFramework.FluentHelper</Title>
+    <Authors>Andrea Pittaluga</Authors>
+    <Copyright>Copyright © Andrea Pittaluga 2019</Copyright>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="EntityFramework" Version="6.2.0" />
+  </ItemGroup>
+</Project>

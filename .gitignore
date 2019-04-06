@@ -3,3 +3,6 @@
 ################################################################################
 
 /EntityFramework.FluentHelper/obj
+/EntityFramework.FluentHelper/bin
+/.vs
+*.user
