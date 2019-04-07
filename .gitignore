@@ -3,3 +3,18 @@
 ################################################################################
 
 /.vs
+/Examples/EntityFramework.FluentHelper.Examples.Dao/bin/Debug
+/Examples/EntityFramework.FluentHelper.Examples.Dao/obj
+/Examples/EntityFramework.FluentHelper.Examples.Mappings/bin/Debug
+/Examples/EntityFramework.FluentHelper.Examples.Mappings/Properties/AssemblyInfo.cs
+/Examples/EntityFramework.FluentHelper.Examples.Mappings/obj
+/Examples/EntityFramework.FluentHelper.Examples.Models/bin/Debug
+/Examples/EntityFramework.FluentHelper.Examples.Models/Properties/AssemblyInfo.cs
+/Examples/EntityFramework.FluentHelper.Examples.Models/obj
+/Examples/EntityFramework.FluentHelper.Examples.Repositories/bin/Debug
+/Examples/EntityFramework.FluentHelper.Examples.Repositories/obj
+/Examples/EntityFramework.FluentHelper.Examples.Runner/bin/Debug
+/Examples/EntityFramework.FluentHelper.Examples.Runner/obj
+/Sources/EntityFramework.FluentHelper/bin/Debug
+/Sources/EntityFramework.FluentHelper/bin/Release
+/Sources/EntityFramework.FluentHelper/obj
