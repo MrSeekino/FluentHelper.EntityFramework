@@ -1,2 +1,2 @@
 # EntityFramework.FluentHelper
-Helper for codefirst Entityframework projects
+An helper for codefirst's Entityframework projects
