@@ -2,7 +2,4 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/EntityFramework.FluentHelper/obj
-/EntityFramework.FluentHelper/bin
 /.vs
-*.user
