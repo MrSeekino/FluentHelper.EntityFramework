@@ -11,6 +11,10 @@
     <Title>EntityFramework.FluentHelper</Title>
     <Authors>Andrea Pittaluga</Authors>
     <Copyright>Copyright © Andrea Pittaluga 2019</Copyright>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/MrSeekino/EntityFramework.FluentHelper/master/LICENSE.txt</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/MrSeekino/EntityFramework.FluentHelper</PackageProjectUrl>
+    <PackageTags>EntityFramework</PackageTags>
+    <Description>An helper for codefirst's Entityframework projects</Description>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
