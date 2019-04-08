@@ -24,3 +24,7 @@ This software is distributed under the terms of the Free Software Foundation [Le
 Examples
 --------
 An example project that uses EntityFramework.FluentHelper can be found under the [Examples](https://github.com/MrSeekino/EntityFramework.FluentHelper/tree/master/Examples) folder in current repository.
+
+Related Projects
+--------
+  - [EntityFramework.FluentHelper.Moq](https://github.com/MrSeekino/EntityFramework.FluentHelper.Moq)
