@@ -11,7 +11,7 @@ NuGet (<https://www.nuget.org/packages/FluentHelper.EntityFramework>).
 
 Please note that the nuget package is called "FluentHelper.EntityFramework" and not "EntityFramework.FluentHelper"
 
-Alternatively binaries can be builded by opening "EntityFramework.FluentHelper.sln" available in current repository under "Sources" folder
+Alternatively binaries can be builded by opening "EntityFramework.FluentHelper.sln" available in current repository under [Sources](https://github.com/MrSeekino/EntityFramework.FluentHelper/tree/master/Sources) folder
 
 Bug Reports
 -----------
