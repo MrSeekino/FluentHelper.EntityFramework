@@ -19,3 +19,6 @@
 /Sources/EntityFramework.FluentHelper/bin/Release
 /Sources/EntityFramework.FluentHelper/obj
 /Sources/.vs/EntityFramework.FluentHelper/v15
+/Examples/.vs/EntityFramework.FluentHelper.Examples/v15
+/Examples/EntityFramework.FluentHelper.Examples.Tests/bin/Debug
+/Examples/EntityFramework.FluentHelper.Examples.Tests/obj/Debug
