@@ -19,8 +19,12 @@ If you find any bugs, please report them using the [GitHub issue tracker](https:
 
 Licenses
 --------
-This software is distributed under the terms of the Free Software Foundation [Lesser GNU Public License (LGPL), version 3.0](http://www.gnu.org/licenses/lgpl-3.0-standalone.html) (see [LICENSE.txt](LICENSE.txt)).
+This software is distributed under the terms of the Free Software Foundation [Lesser GNU Public License (LGPL), version 3.0](http://www.gnu.org/licenses/lgpl-3.0-standalone.html) (see [LICENSE](LICENSE)).
 
 Examples
 --------
 An example project that uses EntityFramework.FluentHelper can be found under the [Examples](https://github.com/MrSeekino/EntityFramework.FluentHelper/tree/master/Examples) folder in current repository.
+
+Related Projects
+--------
+  - [EntityFramework.FluentHelper.Moq](https://github.com/MrSeekino/EntityFramework.FluentHelper.Moq)
