@@ -22,12 +22,24 @@ namespace EntityFramework.FluentHelper.Examples.Repositories
             DbContext.SaveChanges();
         }
 
+        public void Update(TestData testData)
+        {
+            var testDataInstance = DbContext.Query<TestData>().SingleOrDefault(x => x.Id == testData.Id);
+            if (testDataInstance != null)
+            {
+                testDataInstance.Name = testData.Name;
+                testDataInstance.Active = testData.Active;
+
+                DbContext.SaveChanges();
+            }
+        }
+
         public void Remove(Guid id)
         {
-            var testData = DbContext.Query<TestData>().SingleOrDefault(e => e.Id == id);
-            if (testData != null)
+            var testDataInstance = DbContext.Query<TestData>().SingleOrDefault(e => e.Id == id);
+            if (testDataInstance != null)
             {
-                DbContext.Remove(testData);
+                DbContext.Remove(testDataInstance);
                 DbContext.SaveChanges();
             }
         }
