@@ -7,7 +7,7 @@
     <RootNamespace>EntityFramework.FluentHelper</RootNamespace>
     <AssemblyName>EntityFramework.FluentHelper</AssemblyName>
     <TargetFrameworks>net45;net46;net47</TargetFrameworks>
-	<PackageId>EntityFramework.FluentHelper</PackageId>
+	<PackageId>FluentHelper.EntityFramework</PackageId>
     <Title>EntityFramework.FluentHelper</Title>
     <Authors>Andrea Pittaluga</Authors>
     <Copyright>Copyright © Andrea Pittaluga 2019</Copyright>
