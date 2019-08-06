@@ -15,6 +15,7 @@
     <PackageProjectUrl>https://github.com/MrSeekino/EntityFramework.FluentHelper</PackageProjectUrl>
     <PackageTags>EntityFramework</PackageTags>
     <Description>An helper for codefirst's Entityframework projects</Description>
+    <Version>1.1.0</Version>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />

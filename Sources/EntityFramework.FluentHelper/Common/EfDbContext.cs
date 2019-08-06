@@ -23,9 +23,7 @@ namespace EntityFramework.FluentHelper.Common
 
         void CreateDbContext()
         {
-            if (DbContext != null)
-                DbContext.Dispose();
-
+            DbContext?.Dispose();
             DbContext = new EfDbModel(NameOrConnectionString);
 
             if (LogAction != null)
@@ -60,6 +58,13 @@ namespace EntityFramework.FluentHelper.Common
             return DbContext;
         }
 
+        public DbContext CreateNewContext()
+        {
+            Dispose();
+
+            return GetContext();
+        }
+
         public IQueryable<T> Query<T>() where T : class
         {
             return GetContext().Set<T>().AsQueryable();
@@ -88,6 +93,11 @@ namespace EntityFramework.FluentHelper.Common
         public int SaveChanges()
         {
             return GetContext().SaveChanges();
+        }
+
+        public void Dispose()
+        {
+            DbContext?.Dispose();
         }
     }
 }

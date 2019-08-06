@@ -5,13 +5,14 @@ using System.Linq;
 
 namespace EntityFramework.FluentHelper.Interfaces
 {
-    public interface IDbContext
+    public interface IDbContext : IDisposable
     {
         IDbContext SetConnectionString(string nameOrConnectionString);
         IDbContext AddMappingFromAssemblyOf<T>();
         IDbContext SetLogAction(Action<string> logAction);
 
         DbContext GetContext();
+        DbContext CreateNewContext();
 
         IQueryable<T> Query<T>() where T : class;
         void Add<T>(T inputData) where T : class;
