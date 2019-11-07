@@ -48,7 +48,7 @@ namespace EntityFramework.FluentHelper.Runner
                 Console.WriteLine($"Removing 1 row..");
                 testDataRepository.Remove(exampleData.Id);
 
-                testDataList = testDataRepository.GetAll().ToList();
+                testDataList = testDataRepository.GetAllWithCustomQuery().ToList();
                 Console.WriteLine($"Table contains {testDataList.Count} rows");
             }
             catch (Exception ex)
@@ -64,21 +64,5 @@ namespace EntityFramework.FluentHelper.Runner
             Console.WriteLine("Enter any key to continue..");
             Console.ReadLine();
         }
-
-        //IKernel GetKernel()
-        //{
-        //    IKernel kernel = new StandardKernel();
-        //    kernel.Load(EfDbNinjectModuleManager.GetNinjectModules());
-
-        //    return kernel;
-        //}
-
-        //IDbContext GetInjectedContext(IKernel kernel)
-        //{
-        //    IDbContext dbContext = kernel.Get<IDbContext>();
-        //    dbContext.SetConnectionString("name=FluentHelperExampleConnectionString").AddMappingFromAssemblyOf<TestDataMap>();
-
-        //    return dbContext;
-        //}
     }
 }

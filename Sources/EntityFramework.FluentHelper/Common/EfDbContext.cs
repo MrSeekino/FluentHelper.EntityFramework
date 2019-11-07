@@ -1,6 +1,8 @@
 ﻿using EntityFramework.FluentHelper.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Common;
 using System.Data.Entity;
 using System.Linq;
 using System.Reflection;
@@ -98,6 +100,30 @@ namespace EntityFramework.FluentHelper.Common
         public void Dispose()
         {
             DbContext?.Dispose();
+        }
+
+        public DbContextTransaction BeginTransaction(IsolationLevel isolationLevel)
+        {
+            if (DbContext.Database.CurrentTransaction != null)
+                throw new Exception("There is already a transaction ongoing in this context");
+
+            return DbContext.Database.BeginTransaction(isolationLevel);
+        }
+
+        public void UseTransaction(DbTransaction dbTransaction)
+        {
+            DbContext.Database.UseTransaction(dbTransaction);
+        }
+
+        public IQueryable<T> ExecuteQuery<T>(string sqlQuery, params object[] sqlParams) where T : class
+        {
+            var rawQuery = DbContext.Database.SqlQuery<T>(sqlQuery, sqlParams);
+            return rawQuery.AsQueryable();
+        }
+
+        public int ExecuteCommand(string sqlQuery, params object[] sqlParams)
+        {
+            return DbContext.Database.ExecuteSqlCommand(TransactionalBehavior.EnsureTransaction, sqlQuery, sqlParams);
         }
     }
 }

@@ -16,10 +16,20 @@ namespace EntityFramework.FluentHelper.Examples.Repositories
             return DbContext.Query<TestData>();
         }
 
+        public IQueryable<TestData> GetAllWithCustomQuery()
+        {
+            return DbContext.ExecuteQuery<TestData>("select * from TestDataTable");
+        }
+
         public void Add(TestData testData)
         {
-            DbContext.Add(testData);
-            DbContext.SaveChanges();
+            using (var transaction = DbContext.BeginTransaction(System.Data.IsolationLevel.ReadCommitted))
+            {
+                DbContext.Add(testData);
+                DbContext.SaveChanges();
+
+                transaction.Commit();
+            }
         }
 
         public void Update(TestData testData)
