@@ -5,7 +5,11 @@
     <Description>An helper for codefirst's EntityframeworkCore projects using SqlServer</Description>
     <Copyright>Copyright © Andrea Pittaluga 2021</Copyright>
     <PackageProjectUrl>https://github.com/MrSeekino/EntityFramework.FluentHelper</PackageProjectUrl>
-    <PackageTags>EntityFramework</PackageTags>
+    <PackageTags>EntityFrameworkCore</PackageTags>
+    <PackageId>FluentHelperCore.EntityFramework</PackageId>
+    <Authors>Andrea Pittaluga</Authors>
+    <Company>Andrea Pittaluga</Company>
+    <PackageLicenseExpression>LGPL-3.0-or-later</PackageLicenseExpression>
   </PropertyGroup>
 
   <ItemGroup>

@@ -39,3 +39,5 @@
 /Examples/EntityFramework.FluentHelperCore.Examples.Runner/obj
 /Examples/EntityFramework.FluentHelperCore.Examples.Tests/bin/Debug/net5.0
 /Examples/EntityFramework.FluentHelperCore.Examples.Tests/obj
+/Examples/.vs/EntityFramework.FluentHelperCore.Example
+/Sources/.vs/EntityFramework.FluentHelperCore/v16
