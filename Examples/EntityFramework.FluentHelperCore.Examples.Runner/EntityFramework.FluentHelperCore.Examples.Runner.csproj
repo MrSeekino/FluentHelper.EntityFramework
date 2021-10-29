@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EntityFramework.FluentHelperCore.Examples.Models\EntityFramework.FluentHelperCore.Examples.Models.csproj" />
+    <ProjectReference Include="..\EntityFramework.FluentHelperCore.Examples.Repositories\EntityFramework.FluentHelperCore.Examples.Repositories.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="EntityFramework.FluentHelperCore">
+      <HintPath>..\..\Sources\EntityFramework.FluentHelperCore\bin\Release\net5.0\EntityFramework.FluentHelperCore.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>
