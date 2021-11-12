@@ -1,5 +1,6 @@
 ﻿using EntityFramework.FluentHelperCore.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,14 +11,23 @@ namespace EntityFramework.FluentHelperCore.Common
     class EfDbModel : DbContext
     {
         string ConnectionString { get; set; }
+
         Action<string> LogAction { get; set; }
+        Func<EventId, LogLevel, bool> LogFilter { get; set; }
+        bool EnableSensitiveDataLogging { get; set; }
+
+        bool EnableLazyLoadingProxies { get; set; }
 
         List<Assembly> MappingAssemblies { get; set; }
 
-        public EfDbModel(string connectionString, Action<string> logAction) : base()
+        public EfDbModel(string connectionString, Action<string> logAction, Func<EventId, LogLevel, bool> logFilter, bool enableSensitiveDataLogging, bool enableLazyLoadingProxies) : base()
         {
             ConnectionString = connectionString;
+
             LogAction = logAction;
+            LogFilter = logFilter;
+            EnableSensitiveDataLogging = enableSensitiveDataLogging;
+            EnableLazyLoadingProxies = enableLazyLoadingProxies;
 
             MappingAssemblies = new List<Assembly>();
         }
@@ -32,7 +42,13 @@ namespace EntityFramework.FluentHelperCore.Common
             if (!optionsBuilder.IsConfigured)
             {
                 optionsBuilder.UseSqlServer(ConnectionString);
-                optionsBuilder.LogTo(LogAction);
+                optionsBuilder.LogTo(LogAction, LogFilter);
+
+                if (EnableSensitiveDataLogging)
+                    optionsBuilder.EnableSensitiveDataLogging();
+
+                if (EnableLazyLoadingProxies)
+                    optionsBuilder.UseLazyLoadingProxies();
             }
         }
 

@@ -19,7 +19,8 @@ namespace EntityFramework.FluentHelperCore.Examples.Dao
         {
             return EfDbContextManager.GenerateContext()
                 .SetConnectionString(Configuration.GetConnectionString("FluentHelperExampleConnectionString"))
-                .SetLogAction(x => Console.WriteLine(x))
+                .SetLogAction(x => Console.WriteLine(x), true)
+                .UseLazyLoadingProxies()
                 .AddMappingFromAssemblyOf<TestDataMap>();
         }
     }

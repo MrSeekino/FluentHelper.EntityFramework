@@ -7,13 +7,8 @@ namespace EntityFramework.FluentHelperCore.Examples.Runner
 {
     class Program
     {
-        TestData exampleData = new TestData
-        {
-            Id = Guid.NewGuid(),
-            Name = "ExampleData",
-            CreationDate = DateTime.UtcNow,
-            Active = true
-        };
+        TestData ExampleData { get; set; }
+        TestChild ExampleChild { get; set; }
 
         TestDataRepository testDataRepository { get; set; }
 
@@ -25,6 +20,22 @@ namespace EntityFramework.FluentHelperCore.Examples.Runner
 
         public Program()
         {
+            ExampleData = new TestData
+            {
+                Id = Guid.NewGuid(),
+                Name = "ExampleData",
+                CreationDate = DateTime.UtcNow,
+                Active = true
+            };
+            ExampleChild = new TestChild
+            {
+                Id = Guid.NewGuid(),
+                IdParent = ExampleData.Id,
+                Name = "ExampleData",
+                CreationDate = DateTime.UtcNow,
+                Active = true
+            };
+
             testDataRepository = new TestDataRepository();
         }
 
@@ -38,15 +49,23 @@ namespace EntityFramework.FluentHelperCore.Examples.Runner
                 PressToContinue();
 
                 Console.WriteLine($"Adding 1 row..");
-                testDataRepository.Add(exampleData);
+                testDataRepository.Add(ExampleData);
 
                 testDataList = testDataRepository.GetAll().ToList();
                 Console.WriteLine($"Table contains {testDataList.Count} rows");
 
                 PressToContinue();
 
+                Console.WriteLine($"Adding 1 child..");
+                testDataRepository.AddChild(ExampleChild);
+
+                var testDataInstance = testDataRepository.GetById(ExampleData.Id);
+                Console.WriteLine($"TestData is null:{testDataInstance == null} and contains {testDataInstance?.ChildList.Count} children");
+
+                PressToContinue();
+
                 Console.WriteLine($"Removing 1 row..");
-                testDataRepository.Remove(exampleData.Id);
+                testDataRepository.Remove(ExampleData.Id);
 
                 testDataList = testDataRepository.GetAll().ToList();
                 Console.WriteLine($"Table contains {testDataList.Count} rows");

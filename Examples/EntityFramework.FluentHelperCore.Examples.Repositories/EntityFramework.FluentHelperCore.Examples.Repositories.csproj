@@ -5,14 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Sources\EntityFramework.FluentHelperCore\EntityFramework.FluentHelperCore.csproj" />
     <ProjectReference Include="..\EntityFramework.FluentHelperCore.Examples.Dao\EntityFramework.FluentHelperCore.Examples.Dao.csproj" />
     <ProjectReference Include="..\EntityFramework.FluentHelperCore.Examples.Models\EntityFramework.FluentHelperCore.Examples.Models.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="EntityFramework.FluentHelperCore">
-      <HintPath>..\..\Sources\EntityFramework.FluentHelperCore\bin\Release\net5.0\EntityFramework.FluentHelperCore.dll</HintPath>
-    </Reference>
   </ItemGroup>
 
 </Project>

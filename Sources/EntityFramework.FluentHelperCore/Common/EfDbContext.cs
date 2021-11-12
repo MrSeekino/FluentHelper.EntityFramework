@@ -1,5 +1,6 @@
 ﻿using EntityFramework.FluentHelperCore.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,24 +13,41 @@ namespace EntityFramework.FluentHelperCore.Common
         DbContext DbContext { get; set; }
 
         string ConnectionString { get; set; }
+
         Action<string> LogAction { get; set; }
+        Func<EventId, LogLevel, bool> LogFilter { get; set; }
+        bool EnableSensitiveDataLogging { get; set; }
+
+        bool EnableLazyLoadingProxies { get; set; }
 
         public EfDbContext()
         {
             DbContext = null;
+
             ConnectionString = null;
+
             LogAction = null;
+            LogFilter = null;
+            EnableSensitiveDataLogging = false;
+
+            EnableLazyLoadingProxies = false;
         }
 
         void CreateDbContext()
         {
             DbContext?.Dispose();
-            DbContext = new EfDbModel(ConnectionString, LogAction);
+            DbContext = new EfDbModel(ConnectionString, LogAction, LogFilter, EnableSensitiveDataLogging, EnableLazyLoadingProxies);
         }
 
         public IDbContext SetConnectionString(string connectionString)
         {
             ConnectionString = connectionString;
+            return this;
+        }
+
+        public IDbContext UseLazyLoadingProxies()
+        {
+            EnableLazyLoadingProxies = true;
             return this;
         }
 
@@ -43,7 +61,24 @@ namespace EntityFramework.FluentHelperCore.Common
 
         public IDbContext SetLogAction(Action<string> logAction)
         {
+            return SetLogAction(logAction, false, (e, l) => { return true; });
+        }
+
+        public IDbContext SetLogAction(Action<string> logAction, bool enableSensitiveDataLogging)
+        {
+            return SetLogAction(logAction, enableSensitiveDataLogging, (e, l) => { return true; });
+        }
+
+        public IDbContext SetLogAction(Action<string> logAction, Func<EventId, LogLevel, bool> logFilter)
+        {
+            return SetLogAction(logAction, false, logFilter);
+        }
+
+        public IDbContext SetLogAction(Action<string> logAction, bool enableSensitiveDataLogging, Func<EventId, LogLevel, bool> logFilter)
+        {
             LogAction = logAction;
+            LogFilter = logFilter;
+            EnableSensitiveDataLogging = enableSensitiveDataLogging;
             return this;
         }
 

@@ -16,6 +16,11 @@ namespace EntityFramework.FluentHelperCore.Examples.Repositories
             return DbContext.Query<TestData>();
         }
 
+        public TestData GetById(Guid id)
+        {
+            return DbContext.Query<TestData>().SingleOrDefault(e => e.Id == id);
+        }
+
         public void Add(TestData testData)
         {
             DbContext.Add(testData);
@@ -39,9 +44,19 @@ namespace EntityFramework.FluentHelperCore.Examples.Repositories
             var testDataInstance = DbContext.Query<TestData>().SingleOrDefault(e => e.Id == id);
             if (testDataInstance != null)
             {
+                if (testDataInstance.ChildList != null && testDataInstance.ChildList.Any())
+                    foreach (var childInstance in testDataInstance.ChildList)
+                        DbContext.Remove(childInstance);
+
                 DbContext.Remove(testDataInstance);
                 DbContext.SaveChanges();
             }
+        }
+
+        public void AddChild(TestChild testChild)
+        {
+            DbContext.Add(testChild);
+            DbContext.SaveChanges();
         }
     }
 }
