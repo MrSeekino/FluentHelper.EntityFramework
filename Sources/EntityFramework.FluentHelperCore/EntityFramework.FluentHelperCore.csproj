@@ -10,7 +10,7 @@
     <Authors>Andrea Pittaluga</Authors>
     <Company>Andrea Pittaluga</Company>
     <PackageLicenseExpression>LGPL-3.0-or-later</PackageLicenseExpression>
-    <Version>1.1.0</Version>
+    <Version>1.2.0</Version>
   </PropertyGroup>
 
   <ItemGroup>

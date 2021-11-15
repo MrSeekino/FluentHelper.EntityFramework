@@ -1,7 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 
 namespace EntityFramework.FluentHelperCore.Interfaces
@@ -19,6 +21,16 @@ namespace EntityFramework.FluentHelperCore.Interfaces
 
         DbContext GetContext();
         DbContext CreateNewContext();
+
+        bool IsTransactionOpen();
+        IDbContextTransaction BeginTransaction();
+        IDbContextTransaction BeginTransaction(IsolationLevel isolationLevel);
+        void RollbackTransaction();
+        void CommitTransaction();
+        bool AreSavepointsSupported();
+        void CreateSavepoint(string savePointName);
+        void ReleaseSavepoint(string savePointName);
+        void RollbackToSavepoint(string savePointName);
 
         IQueryable<T> Query<T>() where T : class;
         void Add<T>(T inputData) where T : class;

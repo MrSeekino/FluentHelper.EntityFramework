@@ -1,8 +1,10 @@
 ﻿using EntityFramework.FluentHelperCore.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Reflection;
 
@@ -95,6 +97,60 @@ namespace EntityFramework.FluentHelperCore.Common
             Dispose();
 
             return GetContext();
+        }
+
+        public bool IsTransactionOpen()
+        {
+            return GetContext().Database.CurrentTransaction != null;
+        }
+
+        public IDbContextTransaction BeginTransaction()
+        {
+            if (IsTransactionOpen())
+                throw new Exception("A transaction is already open");
+
+            return GetContext().Database.BeginTransaction();
+        }
+
+        public IDbContextTransaction BeginTransaction(IsolationLevel isolationLevel)
+        {
+            if (IsTransactionOpen())
+                throw new Exception("A transaction is already open");
+
+            return GetContext().Database.BeginTransaction(isolationLevel);
+        }
+
+        public void RollbackTransaction()
+        {
+            GetContext().Database.CurrentTransaction.Rollback();
+        }
+
+        public void CommitTransaction()
+        {
+            GetContext().Database.CurrentTransaction.Commit();
+        }
+
+        public bool AreSavepointsSupported()
+        {
+            return GetContext().Database.CurrentTransaction.SupportsSavepoints;
+        }
+
+        public void CreateSavepoint(string savePointName)
+        {
+            if (GetContext().Database.CurrentTransaction.SupportsSavepoints)
+                GetContext().Database.CurrentTransaction.CreateSavepoint(savePointName);
+        }
+
+        public void ReleaseSavepoint(string savePointName)
+        {
+            if (GetContext().Database.CurrentTransaction.SupportsSavepoints)
+                GetContext().Database.CurrentTransaction.ReleaseSavepoint(savePointName);
+        }
+
+        public void RollbackToSavepoint(string savePointName)
+        {
+            if (GetContext().Database.CurrentTransaction.SupportsSavepoints)
+                GetContext().Database.CurrentTransaction.RollbackToSavepoint(savePointName);
         }
 
         public IQueryable<T> Query<T>() where T : class
