@@ -23,8 +23,12 @@ namespace EntityFramework.FluentHelperCore.Examples.Repositories
 
         public void Add(TestData testData)
         {
+            DbContext.BeginTransaction(System.Data.IsolationLevel.ReadCommitted);
+
             DbContext.Add(testData);
             DbContext.SaveChanges();
+
+            DbContext.CommitTransaction();
         }
 
         public void Update(TestData testData)
