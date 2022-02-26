@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <ProjectGuid>{6FB60399-2D07-4314-9574-9B429992D77A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FluentHelper.EntityFramework</RootNamespace>
+    <AssemblyName>FluentHelper.EntityFramework</AssemblyName>
+    <TargetFrameworks>net46;net47</TargetFrameworks>
+	<PackageId>FluentHelper.EntityFramework</PackageId>
+    <Title>EntityFramework.FluentHelper</Title>
+    <Authors>Andrea Pittaluga</Authors>
+    <Copyright>Copyright © Andrea Pittaluga</Copyright>
+    <PackageProjectUrl>https://github.com/MrSeekino/EntityFramework.FluentHelper</PackageProjectUrl>
+    <PackageTags>EntityFramework</PackageTags>
+    <Description>An helper for codefirst's Entityframework projects</Description>
+    <Version>1.3.0</Version>
+    <AssemblyVersion>1.3.0.0</AssemblyVersion>
+    <PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
+    <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+    <FileVersion>1.3.0.0</FileVersion>
+    <RepositoryUrl>https://github.com/MrSeekino/FluentHelper.EntityFramework</RepositoryUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="EntityFramework" Version="6.2.0" />
+  </ItemGroup>
+</Project>
