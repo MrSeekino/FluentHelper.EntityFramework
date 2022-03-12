@@ -22,8 +22,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		CreateSqlTable.sql = CreateSqlTable.sql
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentHelper.EntityFramework.Examples.Tests", "FluentHelper.EntityFramework.Examples.Tests\FluentHelper.EntityFramework.Examples.Tests.csproj", "{C2A615F0-47E8-4E92-9FEF-057AE814E25F}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -54,10 +52,6 @@ Global
 		{4DA452FB-17DC-4143-A109-1B8A73FC8C58}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4DA452FB-17DC-4143-A109-1B8A73FC8C58}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4DA452FB-17DC-4143-A109-1B8A73FC8C58}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C2A615F0-47E8-4E92-9FEF-057AE814E25F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C2A615F0-47E8-4E92-9FEF-057AE814E25F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C2A615F0-47E8-4E92-9FEF-057AE814E25F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C2A615F0-47E8-4E92-9FEF-057AE814E25F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
