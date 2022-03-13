@@ -6,28 +6,37 @@ using System.Data.Common;
 using System.Data.Entity;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 
+[assembly: InternalsVisibleTo("FluentHelper.EntityFramework.Tests")]
 namespace FluentHelper.EntityFramework.Common
 {
     class EfDbContext : IDbContext
     {
-        DbContext DbContext { get; set; }
+        internal DbContext DbContext { get; set; }
 
-        string NameOrConnectionString { get; set; }
-        Action<string> LogAction { get; set; }
+        internal string NameOrConnectionString { get; set; }
+        internal Action<string> LogAction { get; set; }
 
-        public EfDbContext()
+        internal Func<string, EfDbModel> CreateDbContextBehaviour { get; set; }
+
+        public EfDbContext() : this((cs) => { return new EfDbModel(cs); }) { }
+
+        internal EfDbContext(Func<string, EfDbModel> createDbContextBehaviour)
         {
             DbContext = null;
             NameOrConnectionString = null;
             LogAction = null;
+
+            CreateDbContextBehaviour = createDbContextBehaviour;
         }
 
-        void CreateDbContext()
+        internal void CreateDbContext()
         {
             DbContext?.Dispose();
-            DbContext = new EfDbModel(NameOrConnectionString);
+            DbContext = CreateDbContextBehaviour(NameOrConnectionString);
 
+            
             if (LogAction != null)
                 DbContext.Database.Log = LogAction;
         }
@@ -67,6 +76,42 @@ namespace FluentHelper.EntityFramework.Common
             return GetContext();
         }
 
+        public bool IsTransactionOpen()
+        {
+            return GetContext().Database.CurrentTransaction != null;
+        }
+
+        public DbContextTransaction BeginTransaction()
+        {
+            if (IsTransactionOpen())
+                throw new Exception("There is already a transaction ongoing in this context");
+
+            return GetContext().Database.BeginTransaction();
+        }
+
+        public DbContextTransaction BeginTransaction(IsolationLevel isolationLevel)
+        {
+            if (DbContext.Database.CurrentTransaction != null)
+                throw new Exception("There is already a transaction ongoing in this context");
+
+            return DbContext.Database.BeginTransaction(isolationLevel);
+        }
+
+        public void UseTransaction(DbTransaction dbTransaction)
+        {
+            DbContext.Database.UseTransaction(dbTransaction);
+        }
+
+        public void RollbackTransaction()
+        {
+            GetContext().Database.CurrentTransaction.Rollback();
+        }
+
+        public void CommitTransaction()
+        {
+            GetContext().Database.CurrentTransaction.Commit();
+        }
+
         public IQueryable<T> Query<T>() where T : class
         {
             return GetContext().Set<T>().AsQueryable();
@@ -100,19 +145,6 @@ namespace FluentHelper.EntityFramework.Common
         public void Dispose()
         {
             DbContext?.Dispose();
-        }
-
-        public DbContextTransaction BeginTransaction(IsolationLevel isolationLevel)
-        {
-            if (DbContext.Database.CurrentTransaction != null)
-                throw new Exception("There is already a transaction ongoing in this context");
-
-            return DbContext.Database.BeginTransaction(isolationLevel);
-        }
-
-        public void UseTransaction(DbTransaction dbTransaction)
-        {
-            DbContext.Database.UseTransaction(dbTransaction);
         }
 
         public IQueryable<T> ExecuteQuery<T>(string sqlQuery, params object[] sqlParams) where T : class

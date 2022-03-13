@@ -4,7 +4,7 @@ using System.Data.Entity.ModelConfiguration;
 
 namespace FluentHelper.EntityFramework.Common
 {
-    public abstract class EfDbMap
+    public abstract class EfDbMap<T> : IDbMap where T : class
     {
         DbModelBuilder ModelBuilder { get; set; }
 
@@ -13,16 +13,11 @@ namespace FluentHelper.EntityFramework.Common
             return ModelBuilder;
         }
 
-        public EfDbMap SetModelBuilder(DbModelBuilder modelBuilder)
+        public void SetModelBuilder(DbModelBuilder modelBuilder)
         {
             ModelBuilder = modelBuilder;
-
-            return this;
         }
-    }
 
-    public abstract class EfDbMap<T> : EfDbMap, IDbMap where T : class
-    {
         public EntityTypeConfiguration<T> Entity
         {
             get

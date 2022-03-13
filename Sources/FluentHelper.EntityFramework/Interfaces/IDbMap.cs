@@ -1,7 +1,16 @@
-﻿namespace FluentHelper.EntityFramework.Interfaces
+﻿using System.Data.Entity;
+using System.Runtime.CompilerServices;
+
+[assembly: InternalsVisibleTo("FluentHelper.EntityFramework.Tests")]
+[assembly: InternalsVisibleTo("DynamicProxyGenAssembly2")]
+namespace FluentHelper.EntityFramework.Interfaces
 {
-    interface IDbMap
+    internal interface IDbMap
     {
+        DbModelBuilder GetModelBuilder();
+
+        void SetModelBuilder(DbModelBuilder modelBuilder);
+
         void Map();
     }
 }
