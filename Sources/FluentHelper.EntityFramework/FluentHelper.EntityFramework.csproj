@@ -6,7 +6,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>FluentHelper.EntityFramework</RootNamespace>
     <AssemblyName>FluentHelper.EntityFramework</AssemblyName>
-    <TargetFrameworks>net46;net47</TargetFrameworks>
+    <TargetFrameworks>net46;net47;net48</TargetFrameworks>
 	<PackageId>FluentHelper.EntityFramework</PackageId>
     <Title>EntityFramework.FluentHelper</Title>
     <Authors>Andrea Pittaluga</Authors>
@@ -14,11 +14,11 @@
     <PackageProjectUrl>https://github.com/MrSeekino/FluentHelper.EntityFramework</PackageProjectUrl>
     <PackageTags>EntityFramework,FluentHelper</PackageTags>
     <Description>An helper for codefirst's Entityframework projects</Description>
-    <Version>1.4.0</Version>
-    <AssemblyVersion>1.4.0.0</AssemblyVersion>
-    <PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
+    <Version>1.4.1</Version>
+    <AssemblyVersion>1.4.1.0</AssemblyVersion>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
-    <FileVersion>1.4.0.0</FileVersion>
+    <FileVersion>1.4.1.0</FileVersion>
     <RepositoryUrl>https://github.com/MrSeekino/FluentHelper.EntityFramework</RepositoryUrl>
   </PropertyGroup>
   <ItemGroup>
